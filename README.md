@@ -1,25 +1,55 @@
-# QA Coin combination ([uk](readme.uk.md))
+# 🪙 QA: Coin Combination - Algorithm Validation Suite
 
-Write tests for `getCoinCombination` function that takes a non-negative integer
-`cents` (a specific amount in cents) and returns a combination of the smallest
-possible number of coins, giving the same amount.
+> ### A comprehensive unit testing suite built with **Jest** to validate a greedy algorithm designed for optimal coin dispensing.
 
-The function should return an array where:
+This repository serves as a professional showcase of **Software Quality Assurance (QA)** practices, specifically focusing on mathematical and algorithmic verification. It demonstrates how to architect tests for the `getCoinCombination` function, ensuring it accurately calculates the smallest possible number of coins for a given amount.
 
-- `coins[0]` = number of pennies (1 penny = 1 cent);
-- `coins[1]` = number of nickels (1 nickel = 5 cents);
-- `coins[2]` = number of dimes (1 dime = 10 cents);
-- `coins[3]` = number of quarters (1 quarter = 25 cents).
+---
 
-Examples:
+## 🎯 System Under Test (SUT)
 
-```js
-getCoinCombination(1) === [1, 0, 0, 0] // 1 penny
-getCoinCombination(6) === [1, 1, 0, 0] // 1 penny + 1 nickel
-getCoinCombination(17) === [2, 1, 1, 0] // 2 pennies + 1 nickel + 1 dime
-getCoinCombination(50) === [0, 0, 0, 2] // 2 quarters
-```
+The `getCoinCombination` function accepts a non-negative integer representing a specific amount in `cents`[cite: 5]. It processes this input and returns an array representing the optimal (minimum) combination of coins required to match that exact amount[cite: 5].
 
-[Guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md)
+**Data Structure (Output Array Mapping):**
+- `coins[0]` = Number of pennies (1 cent)[cite: 5]
+- `coins[1]` = Number of nickels (5 cents)[cite: 5]
+- `coins[2]` = Number of dimes (10 cents)[cite: 5]
+- `coins[3]` = Number of quarters (25 cents)[cite: 5]
 
-Read more about [Jest expectations](https://jestjs.io/uk/docs/expect).
+**Expected Behavior Examples:**
+- `getCoinCombination(1)` strictly equals `[1, 0, 0, 0]` (1 penny)[cite: 5]
+- `getCoinCombination(6)` strictly equals `[1, 1, 0, 0]` (1 penny + 1 nickel)[cite: 5]
+- `getCoinCombination(17)` strictly equals `[2, 1, 1, 0]` (2 pennies + 1 nickel + 1 dime)[cite: 5]
+- `getCoinCombination(50)` strictly equals `[0, 0, 0, 2]` (2 quarters)[cite: 5]
+
+---
+
+## 🧪 QA Strategy & Test Design
+
+To guarantee the algorithm handles all possible variations flawlessly, the test suite leverages **Jest expectations**[cite: 5] and targets the following scenarios:
+
+| Testing Technique | Scenario Covered | QA Focus |
+| :--- | :--- | :--- |
+| **Boundary Value Analysis (BVA)** | Input is exactly `0` cents. | Validating the edge case where no coins should be dispensed (`[0, 0, 0, 0]`). |
+| **Equivalence Class Partitioning** | Exact coin match (e.g., `25` cents). | Ensuring the algorithm doesn't overcomplicate and directly returns a single highest-value coin (`[0, 0, 0, 1]`). |
+| **Equivalence Class Partitioning** | Complex combinations (e.g., `43` cents). | Verifying the "greedy" aspect of the algorithm—it must prioritize larger coins first before falling back to smaller ones. |
+| **Data Type Validation** | Checking array length and element types. | Asserting that the output is exactly an array of 4 integers. |
+
+---
+
+## 🧰 Tech Stack
+
+- **Environment:** Node.js
+- **Language:** JavaScript (ES6+)
+- **Testing Framework:** [Jest](https://jestjs.io/) 
+
+---
+
+## ⚙️ How to Run the Tests
+
+To execute the test suite locally and review the assertions:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/webdevnikfull/js_get_coin_combination.git](https://github.com/webdevnikfull/js_get_coin_combination.git)
+   cd js_get_coin_combination
