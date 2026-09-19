@@ -1,55 +1,45 @@
-# 🪙 QA: Coin Combination - Algorithm Validation Suite
+# 🧪 QA Portfolio: Coin Combination Algorithm & Unit Testing
 
-> ### A comprehensive unit testing suite built with **Jest** to validate a greedy algorithm designed for optimal coin dispensing.
+> **About this repository:** This project focuses on the foundation of the Agile Testing Pyramid: **Unit Testing**. It demonstrates how to validate core mathematical and logical algorithms (calculating optimal coin combinations for a given amount) using automated unit tests, static analysis, and continuous integration.
 
-This repository serves as a professional showcase of **Software Quality Assurance (QA)** practices, specifically focusing on mathematical and algorithmic verification. It demonstrates how to architect tests for the `getCoinCombination` function, ensuring it accurately calculates the smallest possible number of coins for a given amount.
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Unit Testing](https://img.shields.io/badge/-Unit_Testing-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![ESLint](https://img.shields.io/badge/-Static_Analysis-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/-CI/CD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
----
+## 🎯 Project Overview
 
-## 🎯 System Under Test (SUT)
+This repository contains a specialized JavaScript utility function designed to calculate the optimal breakdown of coin values for any given monetary amount (`src/getCoinCombination.js`). 
 
-The `getCoinCombination` function accepts a non-negative integer representing a specific amount in `cents`[cite: 5]. It processes this input and returns an array representing the optimal (minimum) combination of coins required to match that exact amount[cite: 5].
+As a **QA Automation Engineer**, my objective in this project is to ensure the algorithmic logic behaves predictably by writing and maintaining comprehensive unit tests (`src/getCoinCombination.test.js`) that cover standard use cases, boundary values, and edge conditions directly at the code level.
 
-**Data Structure (Output Array Mapping):**
-- `coins[0]` = Number of pennies (1 cent)[cite: 5]
-- `coins[1]` = Number of nickels (5 cents)[cite: 5]
-- `coins[2]` = Number of dimes (10 cents)[cite: 5]
-- `coins[3]` = Number of quarters (25 cents)[cite: 5]
+## 🛠️ QA Tech Stack & Tools
 
-**Expected Behavior Examples:**
-- `getCoinCombination(1)` strictly equals `[1, 0, 0, 0]` (1 penny)[cite: 5]
-- `getCoinCombination(6)` strictly equals `[1, 1, 0, 0]` (1 penny + 1 nickel)[cite: 5]
-- `getCoinCombination(17)` strictly equals `[2, 1, 1, 0]` (2 pennies + 1 nickel + 1 dime)[cite: 5]
-- `getCoinCombination(50)` strictly equals `[0, 0, 0, 2]` (2 quarters)[cite: 5]
+* **Testing Level:** Unit Testing (White-Box Testing)
+* **CI/CD Pipeline:** GitHub Actions (Automated test execution on every push/PR)
+* **Static Code Analysis (Shift-Left QA):** ESLint
+* **Core Language:** JavaScript (ES6+)
 
----
+## 📊 Test Strategy & Coverage
 
-## 🧪 QA Strategy & Test Design
+The testing strategy is engineered to isolate and tightly validate the algorithmic business logic:
 
-To guarantee the algorithm handles all possible variations flawlessly, the test suite leverages **Jest expectations**[cite: 5] and targets the following scenarios:
+### 1. Unit Testing (Code Level Validation)
+Located in `src/getCoinCombination.test.js`, the automated test suite verifies:
+* Correct calculation and combination output for various input amounts.
+* Robust handling of edge cases (e.g., zero amounts, minimal values, large sums).
+* Data integrity and deterministic return formats.
 
-| Testing Technique | Scenario Covered | QA Focus |
-| :--- | :--- | :--- |
-| **Boundary Value Analysis (BVA)** | Input is exactly `0` cents. | Validating the edge case where no coins should be dispensed (`[0, 0, 0, 0]`). |
-| **Equivalence Class Partitioning** | Exact coin match (e.g., `25` cents). | Ensuring the algorithm doesn't overcomplicate and directly returns a single highest-value coin (`[0, 0, 0, 1]`). |
-| **Equivalence Class Partitioning** | Complex combinations (e.g., `43` cents). | Verifying the "greedy" aspect of the algorithm—it must prioritize larger coins first before falling back to smaller ones. |
-| **Data Type Validation** | Checking array length and element types. | Asserting that the output is exactly an array of 4 integers. |
+### 2. Continuous Integration (CI/CD)
+The project is seamlessly integrated with GitHub Actions (`.github/workflows/test.yml`). Every commit automatically triggers a pipeline that:
+* Runs `ESLint` to catch syntax, logic, and style errors early in the development lifecycle.
+* Executes the full unit test suite to prevent regressions from reaching production.
 
----
+## 🚀 How to Run the Tests Locally
 
-## 🧰 Tech Stack
+To evaluate the unit tests and static analysis tools on your local machine, follow these steps:
 
-- **Environment:** Node.js
-- **Language:** JavaScript (ES6+)
-- **Testing Framework:** [Jest](https://jestjs.io/) 
-
----
-
-## ⚙️ How to Run the Tests
-
-To execute the test suite locally and review the assertions:
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/webdevnikfull/js_get_coin_combination.git](https://github.com/webdevnikfull/js_get_coin_combination.git)
-   cd js_get_coin_combination
+### 1. Environment Setup
+Clone the repository and install the required Node.js dependencies:
+```bash
+npm install
